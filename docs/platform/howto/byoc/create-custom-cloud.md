@@ -993,9 +993,13 @@ networking configuration. Contact your account team for more information.
 
 ## Related pages
 
--   [About bring your own cloud (BYOC)](/docs/platform/concepts/byoc)
+-   [About bring your own cloud](/docs/platform/concepts/byoc)
+-   [Bring your own cloud networking and security](/docs/platform/howto/byoc/networking-security)
 -   [Enable bring your own cloud (BYOC)](/docs/platform/howto/byoc/enable-byoc)
 -   [Assign a project to your custom cloud](/docs/platform/howto/byoc/assign-project-custom-cloud)
 -   [Add customer's contact information for your custom cloud](/docs/platform/howto/byoc/add-customer-info-custom-cloud)
+-   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
+-   [Download an infrastructure template and a variables file](/docs/platform/howto/byoc/download-infrastructure-template)
 -   [Tag custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources)
--   [Rename your custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
+-   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/use-tiered-storage)
+-   [Delete a custom cloud](/docs/platform/howto/byoc/delete-custom-cloud)
