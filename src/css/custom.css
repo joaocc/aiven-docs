@@ -219,6 +219,12 @@ ul+div {
   display: flex;
 }
 
+.service-param .param a {
+  color: var(--ifm-link-color);
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
 .service-param .constraints ul {
   list-style: none;
   font-size: 90%;

@@ -14,14 +14,27 @@ handlebars.registerHelper('parameterDetailsHelper', function (options) {
   var minimum = options.hash.minimum;
   var maximum = options.hash.maximum;
   var def = options.hash.def;
+  var fullname = parent + '.' + name;
+  var fullnameid = fullname.replace('.', '-');
 
   var html = '<div class="param">';
   if (parent) {
-    html += '<p class="name"><strong>' + parent + '.' + name + '</strong></p>';
+    html +=
+      '<p class="name" id="' +
+      fullnameid +
+      '"><strong>' +
+      fullname +
+      '</strong></p>';
   } else {
-    html += '<p class="name"><strong>' + name + '</strong></p>';
+    html +=
+      '<p class="name" id="' + name + '"><strong>' + name + '</strong></p>';
   }
   html += '<p><code class="type">' + type + '</code></p>';
+  if (parent) {
+    html += '<a href="#' + fullnameid + '">#</a>';
+  } else {
+    html += '<a href="#' + name + '">#</a>';
+  }
   html += '</div>';
   if (minimum || maximum || def) {
     html += '<div class="constraints"><ul>';
