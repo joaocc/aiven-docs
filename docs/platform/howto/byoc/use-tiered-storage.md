@@ -13,7 +13,7 @@ services operating within those clouds need to have tiered storage activated.
 
 Each custom cloud you create has tiered storage enabled by default. For existing custom
 clouds created in the past with no tiered storage support, you can
-[activate tiered storage](docs/platform/howto/byoc/use-byoc-tiered-storage#activate-tiered-storage)
+[activate tiered storage](/docs/platform/howto/byoc/use-tiered-storage#activate-tiered-storage-on-a-custom-cloud)
 in the [Aiven Console](https://console.aiven.io/).
 
 ## Prerequisites
