@@ -123,5 +123,5 @@ For more information on Aiven security and compliance, see
 -   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
 -   [Download an infrastructure template and a variables file](/docs/platform/howto/byoc/download-infrastructure-template)
 -   [Tag custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources)
--   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/store-data)
+-   [Storing data in custom clouds](/docs/platform/howto/byoc/store-data)
 -   [Delete a custom cloud](/docs/platform/howto/byoc/delete-custom-cloud)
