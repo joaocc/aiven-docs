@@ -1,7 +1,7 @@
 ---
-title: Use tiered storage in custom clouds
-sidebar_label: Use tiered storage
-keywords: [bring your own cloud, byoc, custom cloud, BYOC cloud]
+title: Storing data in custom clouds
+sidebar_label: Data storage
+keywords: [bring your own cloud, byoc, custom cloud, BYOC cloud, object storage, tiered storage, S3 bucket, S3]
 ---
 
 import ConsoleLabel from "@site/src/components/ConsoleIcons";
@@ -13,7 +13,7 @@ services operating within those clouds need to have tiered storage activated.
 
 Each custom cloud you create has tiered storage enabled by default. For existing custom
 clouds created in the past with no tiered storage support, you can
-[activate tiered storage](/docs/platform/howto/byoc/use-tiered-storage#activate-tiered-storage-on-a-custom-cloud)
+[activate tiered storage](/docs/platform/howto/byoc/store-data#activate-tiered-storage-on-a-custom-cloud)
 in the [Aiven Console](https://console.aiven.io/).
 
 ## Prerequisites

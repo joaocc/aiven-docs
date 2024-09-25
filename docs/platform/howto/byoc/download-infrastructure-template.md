@@ -92,5 +92,5 @@ avn byoc template terraform get-vars                             \
 -   [Add customer's contact information for your custom cloud](/docs/platform/howto/byoc/add-customer-info-custom-cloud)
 -   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
 -   [Tag custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources)
--   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/use-tiered-storage)
+-   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/store-data)
 -   [Delete a custom cloud](/docs/platform/howto/byoc/delete-custom-cloud)

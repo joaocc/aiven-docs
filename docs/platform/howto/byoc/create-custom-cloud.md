@@ -593,13 +593,13 @@ In the **Create custom cloud** wizard:
 
     -   BYOC remote storage (enabled by default)
 
-        -   [Tiered storage](/docs/platform/howto/byoc/use-tiered-storage) using your own
+        -   [Tiered storage](/docs/platform/howto/byoc/store-data) using your own
             object storage (S3 bucket) as a tier for historical or rarely queried data
         -   Backups stored in your own cloud account
 
         :::note
         Permissions for S3 bucket management will be included in the Terraform
-        infrastructure template to be generated upon compliting this step.
+        infrastructure template to be generated upon completing this step.
         :::
 
 1.  Click **Next**.
@@ -1005,5 +1005,5 @@ networking configuration. Contact your account team for more information.
 -   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
 -   [Download an infrastructure template and a variables file](/docs/platform/howto/byoc/download-infrastructure-template)
 -   [Tag custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources)
--   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/use-tiered-storage)
+-   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/store-data)
 -   [Delete a custom cloud](/docs/platform/howto/byoc/delete-custom-cloud)

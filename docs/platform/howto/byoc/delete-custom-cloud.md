@@ -97,4 +97,4 @@ When running `terraform destroy`, add `-var-file=FILE_NAME.vars` as an option.
 -   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
 -   [Download an infrastructure template and a variables file](/docs/platform/howto/byoc/download-infrastructure-template)
 -   [Tag custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources)
--   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/use-tiered-storage)
+-   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/store-data)

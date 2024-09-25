@@ -136,5 +136,5 @@ Any change to infrastructure tags requires reapplying the Terraform template.
 -   [Add customer's contact information for your custom cloud](/docs/platform/howto/byoc/add-customer-info-custom-cloud)
 -   [Rename a custom cloud](/docs/platform/howto/byoc/rename-custom-cloud)
 -   [Download an infrastructure template and a variables file](/docs/platform/howto/byoc/download-infrastructure-template)
--   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/use-tiered-storage)
+-   [Use tiered storage in your custom cloud](/docs/platform/howto/byoc/store-data)
 -   [Delete a custom cloud](/docs/platform/howto/byoc/delete-custom-cloud)
