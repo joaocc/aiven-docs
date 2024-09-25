@@ -537,13 +537,24 @@ account.
 
 In the **Create custom cloud** wizard:
 
-1.  Specify the following:
-
-    -   Custom cloud name
+1.  Specify cloud details:
 
     -   Cloud provider
-
     -   Region
+    -   Custom cloud name
+    -   [Infrastructure tags](/docs/platform/howto/byoc/tag-custom-cloud-resources)
+
+1.  Click **Next**.
+
+1.  Set up deployment and storage details:
+
+    -   [Deployment model](/docs/platform/concepts/byoc#byoc-deployment)
+
+        Choose between:
+        - Private model, which routes traffic through a proxy for additional security
+          utilizing a bastion host physically separated from the Aiven services.
+        - Public model, which allows the Aiven control plane to connect to the service
+          nodes via the public internet.
 
     -   CIDR
 
@@ -580,18 +591,18 @@ In the **Create custom cloud** wizard:
             cannot change the BYOC VPC CIDR block after your custom
             cloud is created.
 
-    -   Deployment model: Choose between
-        [the private architecture and the public architecture](/docs/platform/concepts/byoc).
+    -   BYOC remote storage (enabled by default)
 
-        - Private model routes traffic through a proxy for additional security utilizing
-          a bastion host physically separated from the Aiven services.
-        - Public model allows the Aiven control plane to connect to the service nodes
-          via the public internet.
+        -   [Tiered storage](/docs/platform/howto/byoc/use-tiered-storage) using your own
+            object storage (S3 bucket) as a tier for historical or rarely queried data
+        -   Backups stored in your own cloud account
 
-    -   Infrastructure tags: Select key-value pairs to
-        [tag your custom cloud resources](/docs/platform/howto/byoc/tag-custom-cloud-resources).
+        :::note
+        Permissions for S3 bucket management will be included in the Terraform
+        infrastructure template to be generated upon compliting this step.
+        :::
 
-1.  Select **Next**.
+1.  Click **Next**.
 
 Your IaC Terraform template gets generated based on your inputs. You can
 view, copy, or download it. Now, you can use the template to
@@ -610,7 +621,9 @@ account.
 Use the Terraform template generated in step
 [Generate an infrastructure template](/docs/platform/howto/byoc/create-custom-cloud#generate-infra-template)
 to create your Role ARN by deploying the template in your
-AWS account. Continue working in the **Create custom cloud** wizard:
+AWS account.
+
+Continue working in the **Create custom cloud** wizard:
 
 1.  Copy or download the template and the variables file from the
     **Create custom cloud** wizard.
@@ -643,7 +656,7 @@ AWS account. Continue working in the **Create custom cloud** wizard:
 1.  Enter Role ARN into the **Role ARN** field in the **Create custom
     cloud** wizard.
 
-1.  Select **Next** to proceed or park your cloud setup and save
+1.  Click **Next** to proceed or park your cloud setup and save
     your current configuration as a draft by selecting **Save draft**.
     You can resume creating your cloud later.
 
@@ -661,24 +674,14 @@ Your cloud can be available in:
 - Selected organizational units
 - Specific projects only
 
-Continue working in the **Create custom cloud** wizard:
+To set up your cloud's availability in the **Create custom cloud** wizard >
+the **Assign BYOC to projects** section, select one of the two following options:
 
-1.  In the **Custom cloud's availability in your organization**
-    section, select either:
-
-    -   **By default for all projects** to make your custom cloud
-        available in all existing and future projects in the
-        organization
-
-    or
-
-    -   **By selection** to pick specific projects or organizational
-        units where you want your custom cloud to be available.
-
-1.  If you go for the **By selection** option, menus **Assign organizational units** and
-    **Assign projects** show up. Use them to
-    select organizational units and/or projects in which to use your custom
-    cloud.
+-   **By default for all projects** to make your custom cloud
+    available in all existing and future projects in the
+    organization
+-   **By selection** to pick specific projects or organizational
+    units where you want your custom cloud to be available.
 
 :::note
 By selecting an organizational unit, you make your custom cloud
@@ -687,19 +690,20 @@ available from all the projects in this unit.
 
 #### Add customer contacts
 
-Select at least one person whom Aiven can contact in case any technical
-issues with your custom cloud need fixing.
+Select at least one person whom Aiven can contact in case of any technical
+issues with your custom cloud.
 
 :::note
 **Admin** is a mandatory role, which is required as a primary support contact.
 :::
 
-1.  In the **Customer contacts** section, select a contact person's
-    role using the **Job title** menu, and provide their email
+In the **Create custom cloud** wizard > the **Customer contacts** section:
+
+1.  Select a contact person's role using the **Job title** menu, and provide their email
     address in the **Email** field.
 1.  Use **+ Add another contact** to add as many customer contacts as
     needed for your custom cloud.
-1.  Select **Create**.
+1.  Click **Save and validate**.
 
 The custom cloud process has been initiated for you, which is
 communicated in the the **Create custom cloud** wizard as **Creating
@@ -707,7 +711,7 @@ your custom cloud**.
 
 #### Complete the cloud setup
 
-Select **Close** to close the **Create custom cloud** wizard.
+Select **Done** to close the **Create custom cloud** wizard.
 
 The deployment of your new custom cloud might take a few minutes. As
 soon as it's over, and your custom cloud is ready to use, you'll be
