@@ -27,7 +27,7 @@ Create a [custom cloud](/docs/platform/concepts/byoc) for BYOC in your Aiven org
 :::
 
 The process of creating a custom cloud in Aiven differs depending on the
-cloud provider to integrate with:
+cloud provider to integrate with.
 
 <Tabs groupId="group1">
 <TabItem value="1" label="AWS" default>
@@ -101,7 +101,9 @@ you informed on the progress.
     from the Aiven team.
 -   Only [super admins](/docs/platform/howto/make-super-admin) can create custom clouds.
 
-## Prerequisites {#byoc-prerequisites}
+## Before you start
+
+### Prerequisites {#byoc-prerequisites}
 
 <Tabs groupId="group1">
 <TabItem value="1" label="AWS" default>
@@ -146,7 +148,7 @@ required Terraform permissions
 [to integrate with your cloud provider](/docs/platform/howto/byoc/create-custom-cloud#create-cloud).
 
 <Tabs groupId="group1">
-<TabItem value="1" label="AWS permissions" default>
+<TabItem value="1" label="AWS" default>
 <details><summary>
 Show permissions required for creating resources for bastion and workload networks
 </summary>
@@ -498,7 +500,7 @@ Show permissions required for creating resources for bastion and workload networ
 
 </details>
 </TabItem>
-<TabItem value="2" label="Google Cloud permissions">
+<TabItem value="2" label="Google Cloud">
 <details><summary>
 Show permissions needed by your service account that will run the Terraform script in your
 Google project
@@ -520,7 +522,7 @@ For more information on Google Cloud roles, see
 [IAM basic and predefined roles reference](https://cloud.google.com/iam/docs/understanding-roles)
 in the Goodle Cloud documentation.
 </TabItem>
-<TabItem value="3" label="Azure & OCI permissions">
+<TabItem value="3" label="Azure & OCI">
 The Aiven team will talk to you to determine required permissions.
 </TabItem>
 </Tabs>
