@@ -94,10 +94,10 @@ Create a custom cloud either in the Aiven Console or with the Aiven CLI.
     in the sidebar.
 1.  In the **Bring your own cloud** view, select **Create custom cloud**.
 
-#### Generate an infrastructure template {#generate-infra-template}
+#### Generate an infrastructure template
 
 In this step, an IaC template is generated in the Terraform format. In
-[the next step](/docs/platform/howto/byoc/create-custom-cloud#deploy-template),
+[the next step](/docs/platform/howto/byoc/create-custom-cloud/create-google-custom-cloud#deploy-the-template),
 you'll deploy this template in your Google Cloud account to acquire a privilege-bearing
 service account (SA), which Aiven needs for accessing your Google Cloud account.
 
@@ -157,11 +157,14 @@ In the **Create custom cloud** wizard:
             cannot change the BYOC VPC CIDR block after your custom
             cloud is created.
 
-    -   BYOC remote storage (enabled by default)
+    -   BYOC remote storage
 
-        -   [Tiered storage](/docs/platform/howto/byoc/store-data) using your own
-            object storage (S3 bucket) as a tier for historical or rarely queried data
-        -   Backups stored in your own cloud account
+        By default, data is stored in your own cloud account's object storage using one S3
+        bucket per service.
+
+        -   [Tiered storage](/docs/platform/howto/byoc/store-data) (with object storage as
+            a tier for historical or rarely queried data)
+        -   Backups
 
         :::note
         Permissions for S3 bucket management will be included in the Terraform
@@ -170,24 +173,16 @@ In the **Create custom cloud** wizard:
 
 1.  Click **Next**.
 
-Your IaC Terraform template gets generated based on your inputs. You can
-view, copy, or download it. Now, you can use the template to
-[acquire Role ARN](/docs/platform/howto/byoc/create-custom-cloud#deploy-template).
+Your infrastructure Terraform template gets generated based on your inputs. You can
+view, copy, or download it. Now, you can use the template to acquire a privilege-bearing
+service account.
 
-#### Deploy the template{#deploy-template}
+#### Deploy the template
 
-Role ARN is an [identifier of the
-role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles)
-created when running the infrastructure template in your AWS account.
-Aiven uses Role ARN to [assume the
-role](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole)
-and run operations such as creating VMs for service nodes in your BYOC
-account.
-
-Use the Terraform template generated in step
-[Generate an infrastructure template](/docs/platform/howto/byoc/create-custom-cloud#generate-infra-template)
-to create your Role ARN by deploying the template in your
-AWS account.
+Use the
+[generated Terraform template](/docs/platform/howto/byoc/create-custom-cloud/create-google-custom-cloud#generate-an-infrastructure-template)
+to create a privilege-bearing service account by deploying the template in your Google
+Cloud account.
 
 Continue working in the **Create custom cloud** wizard:
 
@@ -200,7 +195,7 @@ Continue working in the **Create custom cloud** wizard:
     To connect to a custom-cloud service from different security groups
     (other than the one dedicated for the custom cloud) or from IP
     address ranges, add specific ingress rules before you apply a
-    Terraform infrastructure template in your AWS account in the process
+    Terraform infrastructure template in your Google Cloud account in the process
     of creating a custom cloud resources.
 
     Before adding ingress rules, see the examples provided in the
@@ -208,19 +203,18 @@ Continue working in the **Create custom cloud** wizard:
     Console](https://console.aiven.io/).
     :::
 
-1.  Use Terraform to deploy the infrastructure template in your AWS account with the
-    provided variables.
+1.  Use Terraform to deploy the infrastructure template in your Google Cloud  account with
+    the provided variables.
 
     :::important
     When running `terraform plan` and `terraform apply`, add `-var-file=FILE_NAME.vars`
     as an option.
     :::
 
-1.  Find the role identifier (Role ARN) in the output script after
+1.  Find a privilege-bearing service account in the output script after
     running the template.
 
-1.  Enter Role ARN into the **Role ARN** field in the **Create custom
-    cloud** wizard.
+1.  Supply the privilege-bearing service account into the **Create custom cloud** wizard.
 
 1.  Click **Next** to proceed or park your cloud setup and save
     your current configuration as a draft by selecting **Save draft**.

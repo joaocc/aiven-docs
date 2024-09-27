@@ -413,10 +413,10 @@ Create a custom cloud either in the Aiven Console or with the Aiven CLI.
     in the sidebar.
 1.  In the **Bring your own cloud** view, select **Create custom cloud**.
 
-#### Generate an infrastructure template {#generate-infra-template}
+#### Generate an infrastructure template {#generate-an-infrastructure-template}
 
 In this step, an IaC template is generated in the Terraform format. In
-[the next step](/docs/platform/howto/byoc/create-custom-cloud#deploy-template),
+[the next step](/docs/platform/howto/byoc/create-custom-cloud/create-aws-custom-cloud#deploy-the-template),
 you'll deploy this template in your AWS account to acquire Role ARN
 (Amazon Resource Name), which Aiven needs for accessing your AWS
 account.
@@ -477,11 +477,14 @@ In the **Create custom cloud** wizard:
             cannot change the BYOC VPC CIDR block after your custom
             cloud is created.
 
-    -   BYOC remote storage (enabled by default)
+    -   BYOC remote storage
 
-        -   [Tiered storage](/docs/platform/howto/byoc/store-data) using your own
-            object storage (S3 bucket) as a tier for historical or rarely queried data
-        -   Backups stored in your own cloud account
+        By default, data is stored in your own cloud account's object storage using one S3
+        bucket per custom cloud.
+
+        -   [Tiered storage](/docs/platform/howto/byoc/store-data) (with object storage as
+            a tier for historical or rarely queried data)
+        -   Backups
 
         :::note
         Permissions for S3 bucket management will be included in the Terraform
@@ -492,9 +495,9 @@ In the **Create custom cloud** wizard:
 
 Your IaC Terraform template gets generated based on your inputs. You can
 view, copy, or download it. Now, you can use the template to
-[acquire Role ARN](/docs/platform/howto/byoc/create-custom-cloud#deploy-template).
+[acquire Role ARN](/docs/platform/howto/byoc/create-custom-cloud/create-aws-custom-cloud#deploy-the-template).
 
-#### Deploy the template{#deploy-template}
+#### Deploy the template{#deploy-the-template}
 
 Role ARN is an [identifier of the
 role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles)
@@ -504,10 +507,9 @@ role](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole)
 and run operations such as creating VMs for service nodes in your BYOC
 account.
 
-Use the Terraform template generated in step
-[Generate an infrastructure template](/docs/platform/howto/byoc/create-custom-cloud#generate-infra-template)
-to create your Role ARN by deploying the template in your
-AWS account.
+Use the
+[generated Terraform template](/docs/platform/howto/byoc/create-custom-cloud/create-aws-custom-cloud#generate-an-infrastructure-template)
+to create your Role ARN by deploying the template in your AWS account.
 
 Continue working in the **Create custom cloud** wizard:
 
@@ -536,7 +538,7 @@ Continue working in the **Create custom cloud** wizard:
     as an option.
     :::
 
-1.  Find the role identifier (Role ARN) in the output script after
+1.  Find a role identifier (Role ARN) in the output script after
     running the template.
 
 1.  Enter Role ARN into the **Role ARN** field in the **Create custom
