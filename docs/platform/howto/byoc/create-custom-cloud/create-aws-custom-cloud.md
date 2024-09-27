@@ -414,7 +414,7 @@ Create a custom cloud either in the Aiven Console or with the Aiven CLI.
     in the sidebar.
 1.  In the **Bring your own cloud** view, select **Create custom cloud**.
 
-#### Generate an infrastructure template {#generate-an-infrastructure-template}
+#### Generate an infrastructure template
 
 In this step, an IaC template is generated in the Terraform format. In
 [the next step](/docs/platform/howto/byoc/create-custom-cloud/create-aws-custom-cloud#deploy-the-template),
@@ -498,7 +498,7 @@ Your IaC Terraform template gets generated based on your inputs. You can
 view, copy, or download it. Now, you can use the template to
 [acquire Role ARN](/docs/platform/howto/byoc/create-custom-cloud/create-aws-custom-cloud#deploy-the-template).
 
-#### Deploy the template{#deploy-the-template}
+#### Deploy the template
 
 Role ARN is an [identifier of the
 role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles)
@@ -615,13 +615,14 @@ Your new custom cloud is ready to use only after its status changes to
 </TabItem>
 <TabItem value="2" label="Aiven CLI">
 
-1. Generate an IaC template by running [avn byoc create](/docs/tools/cli/byoc#avn-byoc-create).
+1. Generate an infrastructure template by running
+   [avn byoc create](/docs/tools/cli/byoc#avn-byoc-create).
 
     ```bash
     avn byoc create                               \
       --organization-id "ORGANIZATION_ID" \
       --deployment-model "DEPLOYMENT_MODEL_NAME"  \
-      --cloud-provider "google"                   \
+      --cloud-provider "aws"                   \
       --cloud-region "CLOUD_REGION_NAME"          \
       --reserved-cidr "CIDR_BLOCK"                \
       --display-name "CUSTOM_CLOUD_DISPLAY_NAME"
@@ -642,9 +643,9 @@ Your new custom cloud is ready to use only after its status changes to
        and are by default not accessible from outside. Traffic is routed through a proxy
        for additional security utilizing a bastion host physically separated from the
        Aiven services.
-   - `CLOUD_REGION_NAME` with the name of a Google region where to create your custom cloud,
+   - `CLOUD_REGION_NAME` with the name of an AWS cloud region where to create your custom cloud,
      for example `europe-north1`. See all available options in
-     [Google Cloud regions](/docs/platform/reference/list_of_clouds#google-cloud).
+     [AWS cloud regions](/docs/platform/reference/list_of_clouds#amazon-web-services).
    - `CIDR_BLOCK` with a CIDR block defining the IP address range of the VPC that Aiven
      creates in your own cloud account, for example: `10.0.0.0/16`, `172.31.0.0/16`, or
      `192.168.0.0/20`.
@@ -658,7 +659,7 @@ Your new custom cloud is ready to use only after its status changes to
     ```json
     {
         "custom_cloud_environment": {
-            "cloud_provider": "google",
+            "cloud_provider": "aws",
             "cloud_region": "europe-north1",
             "contact_emails": [
                 {
@@ -669,7 +670,7 @@ Your new custom cloud is ready to use only after its status changes to
             ],
             "custom_cloud_environment_id": "018b6442-c602-42bc-b63d-438026133f60",
             "deployment_model": "standard",
-            "display_name": "My BYOC Cloud on Google",
+            "display_name": "My BYOC Cloud on AWS",
             "errors": [],
             "reserved_cidr": "10.0.0.0/16",
             "state": "draft",
@@ -727,7 +728,7 @@ Your new custom cloud is ready to use only after its status changes to
         To connect to a custom-cloud service from different security groups
         (other than the one dedicated for the custom cloud) or from IP
         address ranges, add specific ingress rules before you apply a
-        Terraform infrastructure template in your Google Cloud account in the process
+        Terraform infrastructure template in your AWS cloud account in the process
         of creating a custom cloud resources.
 
         Before adding ingress rules, see the examples provided in the
@@ -736,24 +737,23 @@ Your new custom cloud is ready to use only after its status changes to
         :::
 
    1. Use Terraform to deploy the infrastructure template with the provided variables in
-      your Google Cloud account. This will generate a privilege-bearing service account (SA).
+      your AWS cloud account. This will generate a Role ARN.
 
        :::important
        When running `terraform plan` and `terraform apply`, add `-var-file=FILE_NAME.vars`
        as an option.
        :::
 
-   1. Find `privilege_bearing_service_account_id` in the output script after running
-      the template.
+   1. Find `aws-iam-role-arn` in the output script after running the template.
 
 1. Provision resources by running [avn byoc provision](/docs/tools/cli/byoc#avn-byoc-provision)
-   and passing the generated `google-privilege-bearing-service-account-id` as an option.
+   and passing the generated `aws-iam-role-arn` as an option.
 
         ```bash
         avn byoc provision                            \
           --organization-id "ORGANIZATION_ID" \
           --byoc-id "CUSTOM_CLOUD_ID"         \
-          --google-privilege-bearing-service-account-id "GENERATED_SERVICE_ACCOUNT_ID"
+          --aws-iam-role-arn "GENERATED_ROLE_ARN"
         ```
 
    Replace the following:
@@ -765,11 +765,9 @@ Your new custom cloud is ready to use only after its status changes to
    - `CUSTOM_CLOUD_ID` with the identifier of your custom cloud, which you can
      extract from the output of the [avn byoc list](/docs/tools/cli/byoc#avn-byoc-list)
      command, for example `018b6442-c602-42bc-b63d-438026133f60`.
-   - `GENERATED_SERVICE_ACCOUNT_ID` with the identifier of the service account
-     created when running the infrastructure template in your Google Cloud account,
-     for example
-     `projects/your-project/serviceAccounts/cce-cce0123456789a@your-project.iam.gserviceaccount.com`.
-     You can extract `GENERATED_SERVICE_ACCOUNT_ID` from the output of the `terraform apply`
+   - `GENERATED_ROLE_ARN` with the identifier of the role created when running the
+     infrastructure template in your AWS cloud account.
+     You can extract `GENERATED_ROLE_ARN` from the output of the `terraform apply`
      command or `terraform output` command.
 
 1. Enable your custom cloud in organizations, projects, or units by running
