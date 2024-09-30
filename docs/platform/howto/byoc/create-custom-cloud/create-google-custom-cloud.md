@@ -1,7 +1,7 @@
 ---
 title: Create a Google-integrated custom cloud
 sidebar_label: Google Cloud
-keywords: [Google Cloud, byoc, bring your own cloud, custom cloud]
+keywords: [Google Cloud, GCP, Google Cloud Platform, byoc, bring your own cloud, custom cloud]
 ---
 
 import ConsoleLabel from "@site/src/components/ConsoleIcons";

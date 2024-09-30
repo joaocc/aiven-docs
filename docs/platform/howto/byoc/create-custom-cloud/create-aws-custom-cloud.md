@@ -1,6 +1,6 @@
 ---
 title: Create an AWS-integrated custom cloud
-sidebar_label: AWS
+sidebar_label: Amazon Web Services
 keywords: [AWS, Amazon Web Services, byoc, bring your own cloud, custom cloud]
 ---
 
