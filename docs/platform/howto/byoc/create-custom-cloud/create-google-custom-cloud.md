@@ -90,7 +90,7 @@ Create a custom cloud either in the Aiven Console or with the Aiven CLI.
 
 #### Launch the BYOC setup
 
-1.  Log in to the [Aiven Console](https://console.aiven.io/), and go to a organization.
+1.  Log in to the [Aiven Console](https://console.aiven.io/), and go to an organization.
 1.  Click **Admin** in the top navigation, and click <ConsoleLabel name="bringyourowncloud"/>
     in the sidebar.
 1.  In the **Bring your own cloud** view, select **Create custom cloud**.
@@ -113,7 +113,7 @@ In the **Create custom cloud** wizard:
 
 1.  Click **Next**.
 
-1.  Set up deployment and storage details:
+1.  Set up deployment <!-- and storage --> details:
 
     -   [Deployment model](/docs/platform/concepts/byoc#byoc-deployment)
 
@@ -158,6 +158,7 @@ In the **Create custom cloud** wizard:
             cannot change the BYOC VPC CIDR block after your custom
             cloud is created.
 
+<!--
     -   BYOC remote storage
 
         By default, data is stored in your own cloud account's object storage using one S3
@@ -171,7 +172,7 @@ In the **Create custom cloud** wizard:
         Permissions for S3 bucket management will be included in the Terraform
         infrastructure template to be generated upon completing this step.
         :::
-
+-->
 1.  Click **Next**.
 
 Your infrastructure Terraform template gets generated based on your inputs. You can
