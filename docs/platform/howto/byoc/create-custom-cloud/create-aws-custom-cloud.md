@@ -478,18 +478,18 @@ In the **Create custom cloud** wizard:
             cannot change the BYOC VPC CIDR block after your custom
             cloud is created.
 
-    -   BYOC remote storage
+    -   Remote storage (BYOC-hosted)
 
-        By default, data is stored in your own cloud account's object storage using one S3
-        bucket per custom cloud.
+        By default, the following data is stored in object storage in your own cloud account:
 
-        -   [Tiered storage](/docs/platform/howto/byoc/store-data) (with object storage as
-            a tier for historical or rarely queried data)
-        -   Backups
+        -   Cold data (learn more about the
+            [BYOC tiered storage](/docs/platform/howto/byoc/store-data#byoc-tiered-storage))
+        -   Service backups
 
         :::note
-        Permissions for S3 bucket management will be included in the Terraform
-        infrastructure template to be generated upon completing this step.
+        - Data is stored in your object storage using one S3 bucket per custom cloud.
+        - Permissions for S3 bucket management will be included in the Terraform
+          infrastructure template to be generated upon completing this step.
         :::
 
 1.  Click **Next**.

@@ -110,17 +110,21 @@ traffic through a proxy for additional security. To accomplish this, Aiven
 utilizes a bastion host (**Bastion node**) physically separated from the Aiven services
 you deploy. The service VMs reside in a privately addressed subnet (**Private subnet**)
 and are accessed by the Aiven management plane via the bastion. They are not
-accessible through the Internet.
+accessible through the internet.
 
 :::note
 Although the bastion host and the service nodes reside in the VPC under
 your management (**BYOC VPC**), they are not accessible (for example, via SSH) to anyone
 outside Aiven.
 
-The bastion and workload nodes require outbound access to the Internet
+The bastion and workload nodes require outbound access to the internet
 to work properly (supporting HA signaling to the Aiven management node and RPM download
 from Aiven repositories).
 :::
+
+The private subnet is where your object storage (two S3 buckets) reside. This storage is
+used for [service backups](/docs/platform/concepts/byoc#byoc-service-backups) and as cold
+[storage for your service's data](/docs/platform/howto/byoc/store-data).
 
 </TabItem>
 <TabItem value="2" label="AWS public">
@@ -129,11 +133,15 @@ from Aiven repositories).
 
 In the AWS public deployment model, a Virtual Private Cloud (**BYOC VPC**) for your Aiven
 services is created within a particular cloud region in your remote cloud account.
-Aiven accesses this VPC through an Internet gateway. Service VMs reside in a publicly
+Aiven accesses this VPC through an internet gateway. Service VMs reside in a publicly
 addressed subnet (**Public subnet**), and Aiven services can be accessed
-through the public Internet: the Aiven control plane connects to the nodes
+through the public internet: the Aiven control plane connects to the nodes
 using the public address, and the Aiven management plane can access the service VMs
 directly.
+
+The public subnet is where your object storage (two S3 buckets) reside. This storage is
+used for [service backups](/docs/platform/concepts/byoc#byoc-service-backups) and as cold
+[storage for your service's data](/docs/platform/howto/byoc/store-data).
 </TabItem>
 <TabItem value="3" label="Google Cloud private">
 
@@ -151,14 +159,14 @@ traffic through a proxy for additional security. To accomplish this, Aiven
 utilizes a bastion host (**Bastion note**) physically separated from the Aiven services
 you deploy. The service VMs reside in a privately addressed subnet (**Private subnet**)
 and are accessed by the Aiven management plane via the bastion. They are not
-accessible through the Internet.
+accessible through the internet.
 
 :::note
 Although the bastion host and the service nodes reside in the VPC under
 your management (**BYOC VPC**), they are not accessible (for example, via SSH) to anyone
 outside Aiven.
 
-The bastion and workload nodes require outbound access to the Internet
+The bastion and workload nodes require outbound access to the internet
 to work properly (supporting HA signaling to the Aiven management node and RPM download
 from Aiven repositories).
 :::
@@ -170,9 +178,9 @@ from Aiven repositories).
 
 In the Google Cloud public deployment model, a Virtual Private Cloud (**Workload VPC**)
 for your Aiven services is created within a particular cloud region in your remote cloud
-account. Aiven accesses this VPC through an Internet gateway. Service VMs reside in a
+account. Aiven accesses this VPC through an internet gateway. Service VMs reside in a
 publicly addressed subnet (**Public subnet**), and Aiven services can be accessed
-through the public Internet: the Aiven control plane connects to the nodes
+through the public internet: the Aiven control plane connects to the nodes
 using the public address, and the Aiven management plane can access the service VMs
 directly.
 </TabItem>
@@ -188,7 +196,7 @@ Depending on the service used, Aiven takes regular backups to enable forking, po
 time recovery (PITR), and disaster recovery.
 
 - Backups of services hosted using AWS BYOC reside in object storage in your own cloud
-account.
+  account.
 - Backups of BYOC services hosted using a cloud provider other than AWS reside in Aiven-owned
   storage by default. It's still possible to store such backups in your own cloud account,
   provided Aiven gets read-write permissions to access the object storage in your cloud
@@ -199,8 +207,7 @@ account.
   - You are responsible for managing object storage configuration.
   :::
 
-To learn more about how data and backups are stored in BYOC, see
-[Storing data in custom clouds](/docs/platform/howto/byoc/store-data).
+Learn more about [storing data in custom clouds](/docs/platform/howto/byoc/store-data).
 
 ## Dev tools for BYOC
 

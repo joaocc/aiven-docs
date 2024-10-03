@@ -113,7 +113,7 @@ In the **Create custom cloud** wizard:
 
 1.  Click **Next**.
 
-1.  Set up deployment <!-- and storage --> details:
+1.  Set up deployment and storage details:
 
     -   [Deployment model](/docs/platform/concepts/byoc#byoc-deployment)
 
@@ -159,20 +159,15 @@ In the **Create custom cloud** wizard:
             cloud is created.
 
 <!--
-    -   BYOC remote storage
+    -   Remote storage (Aiven-hosted)
 
-        By default, data is stored in your own cloud account's object storage using one S3
-        bucket per service.
+        By default, the following data is stored in the Aiven-owned cloud:
 
-        -   [Tiered storage](/docs/platform/howto/byoc/store-data) (with object storage as
-            a tier for historical or rarely queried data)
-        -   Backups
-
-        :::note
-        Permissions for S3 bucket management will be included in the Terraform
-        infrastructure template to be generated upon completing this step.
-        :::
+        -   Cold data (rarely accessed, static, or archived data grouped as a tier using
+            the tiered storage capability)
+        -   Service backups
 -->
+
 1.  Click **Next**.
 
 Your infrastructure Terraform template gets generated based on your inputs. You can
